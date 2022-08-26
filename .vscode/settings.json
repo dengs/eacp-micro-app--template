@@ -1,0 +1,5 @@
+{
+  "editor.formatOnSave": true,
+  "editor.wordWrapColumn": 160,
+  "prettier.configPath": ".prettierrc.js"
+}
