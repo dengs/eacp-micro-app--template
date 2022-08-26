@@ -1,3 +1,4 @@
+# .vscode
 .DS_Store
 node_modules
 /dist
@@ -23,3 +24,4 @@ pnpm-debug.log*
 *.sw?
 
 yarn.lock
+package-lock.json
