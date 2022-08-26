@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "vue-cli-service serve --mode dev",
     "admin": "webpack-dev-server --progress --config ./eacp-admin.config.js",
-    "dev:admin": "yarn dev & yarn eacp-admin",
+    "dev:admin": "yarn dev & yarn admin",
     "build:test": "vue-cli-service build --mode test",
     "build:uat": "vue-cli-service build --mode uat",
     "build:prod": "vue-cli-service build --mode prod",
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
-    "@hanzhisoft/eacp-admin": "^2.0.0-alpha1",
+    "@hanzhisoft/eacp-admin": "^2.0.0-alpha2",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "^5.0.1",

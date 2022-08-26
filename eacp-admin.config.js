@@ -1,28 +1,40 @@
-const EacpAdminDevServerConfig = require("@hanzhisoft/eacp-admin/config/dev-server.config");
-const path = require("path");
+const fs = require("fs");
 const { merge } = require("webpack-merge");
+const AdminDevServerConfig = require("@hanzhisoft/eacp-admin/config/dev-server.config");
+
+const devEnv = {};
+fs.readFileSync(".env.dev", "utf-8")
+  .split(/[\s\n]/)
+  .filter(item => item && item.includes("=") != -1)
+  .forEach(item => (devEnv[item.split("=")[0].substr(item.split("=")[0].includes("VUE_APP_") ? 8 : 0)] = item.split("=")[1]));
+
+console.log("### devEnv:", devEnv);
 
 /**
- * eacp-admin 模块路径
+ * 开发环境：向平台基座注册当前微应用
  */
-const EACP_ADMIN_MODULE_PATH = path.join(__dirname, "./node_modules/@hanzhisoft/eacp-admin");
+const microApps = [
+  {
+    code: devEnv["MICRO_APP_NAME"],
+    name: devEnv["MICRO_APP_NAME"],
+    url: `http://${devEnv["APP_HOST"]}:${devEnv["APP_PORT"]}${devEnv["CTX_PATH"]}`,
+    baseRoute: devEnv["MICRO_APP_BASE_ROUTE"]
+  }
+];
 
 /**
  * 合并配置 & 导出
  */
-module.exports = merge(EacpAdminDevServerConfig, {
-  entry: path.join(EACP_ADMIN_MODULE_PATH, `/config/dev-app.js`),
+module.exports = merge(AdminDevServerConfig, {
   devServer: {
     port: 9527,
-    static: {
-      directory: path.join(EACP_ADMIN_MODULE_PATH, `/dist`)
-    },
+    onBeforeSetupMiddleware: ({ app }) => app.get("/api/envMicroApps", (req, res) => res.json({ success: true, data: microApps })),
     proxy: {
       "/api": {
-        target: "http://192.168.70.216:10006",
+        target: devEnv["API_PROXY_TARGET"],
         ws: false,
         changeOrigin: true,
-        pathRewrite: { "^/api": "api" }
+        pathRewrite: JSON.parse(devEnv["API_PROXY_PATH_REWRITE"])
       }
     }
   }
