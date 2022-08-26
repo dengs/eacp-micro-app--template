@@ -29,5 +29,5 @@ export default {
   save,
   tempSave,
   batchSave,
-  del,
+  del
 };

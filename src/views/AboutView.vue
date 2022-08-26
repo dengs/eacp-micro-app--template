@@ -10,7 +10,7 @@
 export default {
   data() {
     return {
-      inputValue: null,
+      inputValue: null
     };
   },
   mounted() {
@@ -20,9 +20,8 @@ export default {
   },
   created() {
     console.log("@@@@@ App1-created: about");
-  },
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

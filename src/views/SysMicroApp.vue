@@ -47,11 +47,7 @@ export default {
      * 列表查询数据服务（查询、刷新）
      */
     async listFetchDataProvider({ condition, pagination }) {
-      let queryParams = this.buildQueryParams(
-        condition,
-        this.queryModel.conditionModel,
-        pagination
-      );
+      let queryParams = this.buildQueryParams(condition, this.queryModel.conditionModel, pagination);
       if (pagination) {
         return await this.getApi().query(queryParams);
       } else {
@@ -81,8 +77,8 @@ export default {
      */
     async deleteData({ data }) {
       return await this.getApi().del(data);
-    },
-  },
+    }
+  }
 };
 </script>
 

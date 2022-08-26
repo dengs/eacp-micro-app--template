@@ -14,15 +14,15 @@ import HelloWorld from "@/components/HelloWorld.vue";
 export default {
   name: "HomeView",
   components: {
-    HelloWorld,
+    HelloWorld
   },
   data() {
     return {
-      inputValue: null,
+      inputValue: null
     };
   },
   created() {
     console.log("@@@@@ App1-created: home");
-  },
+  }
 };
 </script>

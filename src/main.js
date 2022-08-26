@@ -25,14 +25,14 @@ const app = new Vue({
   router,
   store,
   i18n,
-  render: (h) => h(App),
+  render: h => h(App)
 }).$mount("#app");
 
 /** 派发数据到主应用  */
 window.microApp.dispatch({ $app: app });
 
 // 监听卸载操作
-window.addEventListener("unmount", function () {
+window.addEventListener("unmount", function() {
   // app.$destroy();
   console.log("[micro-app] unmount.");
 });
