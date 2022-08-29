@@ -4,11 +4,14 @@ import router from "./router";
 import store from "./store";
 import i18n from "./locales";
 import App from "./App.vue";
-import { Context } from "./core";
+import { Context, Components } from "./core";
 
 import HanUI, { mixins } from "@hanzhisoft/han-ui";
 import "@hanzhisoft/han-ui/lib/han-ui.css";
 import "element-ui/lib/theme-chalk/index.css";
+
+Vue.config.productionTip = false;
+Vue.prototype.$ctx = Context;
 
 const { Utils, Message, MessageBox } = mixins;
 Vue.use(HanUI);
@@ -16,8 +19,10 @@ Vue.mixin(Utils);
 Vue.mixin(Message);
 Vue.mixin(MessageBox);
 
-Vue.config.productionTip = false;
-Vue.prototype.$ctx = Context;
+/**
+ * 公共组件注册
+ */
+Object.keys(Components).forEach(key => Vue.component(key, Components[key]));
 
 console.log("@@@ window.__MICRO_APP_BASE_ROUTE__: ", window.__MICRO_APP_BASE_ROUTE__);
 
