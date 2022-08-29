@@ -1,6 +1,7 @@
 const fs = require("fs");
 const { merge } = require("webpack-merge");
 const AdminDevServerConfig = require("@hanzhisoft/eacp-admin/config/dev-server.config");
+const extraMicroApp = require("./extra-micro-app");
 
 const devEnv = {};
 fs.readFileSync(".env.dev", "utf-8")
@@ -12,6 +13,8 @@ console.log("### devEnv:", devEnv);
 
 /**
  * 开发环境：向平台基座注册当前微应用
+ * 注：如需要同时启动多个微应用，则在其中一个微应用中启动 eacp-admin 基座服务即可
+ *    基他微应用则在启动基座服务的微应用 extra-micro-app.js 模块中配置即可
  */
 const microApps = [
   {
@@ -19,15 +22,18 @@ const microApps = [
     name: devEnv["MICRO_APP_NAME"],
     url: `http://${devEnv["APP_HOST"]}:${devEnv["APP_PORT"]}${devEnv["CTX_PATH"]}`,
     baseRoute: devEnv["MICRO_APP_BASE_ROUTE"]
-  }
+  },
+  ...extraMicroApp
 ];
+
+console.log("### Register micro apps: ", microApps);
 
 /**
  * 合并配置 & 导出
  */
 module.exports = merge(AdminDevServerConfig, {
   devServer: {
-    port: 9527,
+    port: devEnv["ADMIN_PORT"],
     onBeforeSetupMiddleware: ({ app }) => app.get("/api/envMicroApps", (req, res) => res.json({ success: true, data: microApps })),
     proxy: {
       "/api": {
