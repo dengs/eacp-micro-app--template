@@ -16,11 +16,6 @@ const routes = [
     component: HomeView
   },
   {
-    path: "/sysMicroApp",
-    name: "sysMicroApp",
-    component: () => import(/* webpackChunkName: "sysMicroApp" */ "../views/SysMicroApp.vue")
-  },
-  {
     path: "/about",
     name: "about",
     // route level code-splitting
