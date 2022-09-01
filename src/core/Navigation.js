@@ -1,21 +1,9 @@
-const { app: mainApp } = window.microApp.getData();
+import modules from "./modules";
 const { microAppName } = require("./Context").env;
+const { Navigation } = modules;
 
-/**
- * 打开页签
- * 注：isMicroApp = false 时需传入 component
- * @param {*} options
- * @returns
- */
-export const openTab = ({ key, title, routePath, bread, appKey = microAppName, component, params, isMicroApp } = {}) =>
-  mainApp.openTab({ key, title, routePath, bread, appKey, component, params, isMicroApp });
+const openTab = (options = {}) => Navigation.openTab({ appKey: microAppName, ...options });
 
-/**
- * 打开页签—微应用页面
- * @param {*} options
- * @returns
- */
-export const openMicroAppTab = ({ key, title, routePath, bread, appKey = microAppName, params } = {}) =>
-  mainApp.openMicroAppTab({ key, title, routePath, bread, appKey, params });
+const openMicroAppTab = (options = {}) => Navigation.openMicroAppTab({ appKey: microAppName, ...options });
 
-export default { openTab, openMicroAppTab };
+export default { ...Navigation, openTab, openMicroAppTab };
