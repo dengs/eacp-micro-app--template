@@ -1,6 +1,6 @@
-import modules from "./modules";
+const { Modules = {} } = require("./Based");
+const { Navigation = {} } = Modules;
 const { microAppName } = require("./Context").env;
-const { Navigation } = modules;
 
 const openTab = (options = {}) => Navigation.openTab({ appKey: microAppName, ...options });
 

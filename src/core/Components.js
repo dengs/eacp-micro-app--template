@@ -1,3 +1,3 @@
-const { components } = window.microApp.getData();
+const { Components = {} } = require("./Based");
 
-export default components;
+export default Components;

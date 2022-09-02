@@ -1,5 +1,4 @@
-import modules from "./modules";
-
-const { BaseApi } = modules;
+const { Modules = {} } = require("./Based");
+const { BaseApi = {} } = Modules;
 
 export default BaseApi;

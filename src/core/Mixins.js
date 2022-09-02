@@ -1,5 +1,4 @@
-import modules from "./modules";
-
-const { Mixins } = modules;
+const { Modules = {} } = require("./Based");
+const { Mixins = {} } = Modules;
 
 export default Mixins;
