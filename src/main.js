@@ -12,6 +12,7 @@ import "element-ui/lib/theme-chalk/index.css";
 
 Vue.config.productionTip = false;
 Vue.prototype.$ctx = Context;
+Vue.prototype.loadView = async view => await import(`@/views/${view}`);
 
 const { Utils, Message, MessageBox } = mixins;
 Vue.use(HanUI);
