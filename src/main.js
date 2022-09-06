@@ -3,6 +3,7 @@ import Vue from "vue";
 import router from "./router";
 import store from "./store";
 import i18n from "./locales";
+import api from "./api";
 import App from "./App.vue";
 import { Context, Components } from "./core";
 
@@ -12,6 +13,7 @@ import "element-ui/lib/theme-chalk/index.css";
 
 Vue.config.productionTip = false;
 Vue.prototype.$ctx = Context;
+Vue.prototype.$api = api;
 Vue.prototype.loadView = async view => await import(`@/views/${view}`);
 
 const { Utils, Message, MessageBox } = mixins;
