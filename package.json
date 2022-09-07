@@ -13,6 +13,7 @@
     "dev": "vue-cli-service serve --mode dev",
     "admin": "webpack-dev-server --progress --config ./eacp-admin.config.js",
     "dev:admin": "vue-cli-service serve --mode dev & webpack-dev-server --progress --config ./eacp-admin.config.js",
+    "build": "vue-cli-service build --mode prod",
     "build:test": "vue-cli-service build --mode test",
     "build:uat": "vue-cli-service build --mode uat",
     "build:prod": "vue-cli-service build --mode prod",
