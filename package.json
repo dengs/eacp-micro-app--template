@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@hanzhisoft/han-ui": "^1.2.5",
-    "@micro-zoe/micro-app": "^0.8.9",
     "core-js": "^3.8.3",
     "element-ui": "2.15.6",
     "vue": "2.6.12",
