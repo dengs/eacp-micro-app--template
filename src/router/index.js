@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 
+const { routes: extraRoutes = [] } = require("@/core/Based");
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -24,6 +26,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ "../views/AboutView.vue")
   }
 ];
+
+/**
+ * 动态生成路由：由主应用传递的路数据（菜单配置）
+ */
+(extraRoutes || []).forEach(route => routes.push({ ...route, component: () => import(`@/views/${route.component}`) }));
 
 const router = new VueRouter({
   mode: "history",
