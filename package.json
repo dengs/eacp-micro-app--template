@@ -17,6 +17,7 @@
     "build:test": "vue-cli-service build --mode test",
     "build:uat": "vue-cli-service build --mode uat",
     "build:prod": "vue-cli-service build --mode prod",
+    "format": "prettier --config .prettierrc.js --write 'src/**/*.{js,less,scss,vue}'",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -30,7 +31,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
-    "@hanzhisoft/eacp-admin": "2.0.0-alpha5",
+    "@hanzhisoft/eacp-admin": "^2.0.0-alpha5",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "^5.0.1",
