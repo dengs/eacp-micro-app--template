@@ -2,8 +2,6 @@
  * prettier 格式化配置
  */
 module.exports = {
-  // 包管理器
-  packageManager: "yarn",
   // 行最大字符数
   printWidth: 160,
   // 关闭 tab 缩进
