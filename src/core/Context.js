@@ -8,6 +8,21 @@ const env = {
   microAppName: process.env.VUE_APP_MICRO_APP_NAME
 };
 
-export { env, mainApp, store, i18n };
+/**
+ * 获取全局数据
+ * @param {*} appName
+ * @returns
+ */
+const getGlobalData = appName => (appName ? window.microApp.getGlobalData()[appName] : window.microApp.getGlobalData());
 
-export default { env, mainApp, store, i18n, Modules };
+/**
+ * 设置全局数据
+ * @param {*} { app, data }
+ */
+const setGlobalData = ({ app, data = {} }) => {
+  window.microApp.setGlobalData({ app: app === undefined ? env.microAppName : app, data });
+};
+
+export { env, mainApp, store, i18n, getGlobalData, setGlobalData };
+
+export default { env, mainApp, store, i18n, Modules, getGlobalData, setGlobalData };
