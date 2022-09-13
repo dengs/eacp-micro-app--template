@@ -2,43 +2,48 @@
  * prettier 格式化配置
  */
 module.exports = {
-  // 行最大字符数
+  // 行宽度
   printWidth: 160,
-  // 关闭 tab 缩进
-  useTabs: false,
-  // 使用 2个tab 缩进
+  // 指定每个缩进级别的空格数
   tabWidth: 2,
-  // 行尾需要有分号
+  // 使用制表符缩进
+  useTabs: false,
+  // 在行末尾加上分号
   semi: true,
   // 使用单引号
   singleQuote: false,
-  // 对象key是否使用引号 <as-needed|consistent|preserve>
-  // as-needed 仅在需要的时候使用
-  // consistent 有一个属性需要引号，就都需要引号
-  // preserve 保留用户输入的情况
+  // 对象属性是否使用引号 <as-needed|consistent|preserve>
+  // 释义：as-needed 仅在需要的时候使用、consistent 有一个属性需要引号，就都需要引号、preserve 保留用户输入的情况
   quoteProps: "preserve",
-  // jsx 文件中使用单引号
+  // jsx 使用单引号
   jsxSingleQuote: false,
-  // 末尾不需要逗号 <es5|none|all>
+  // 对象、数组结构末尾是否添加逗号 <es5|none|all>
   trailingComma: "none",
-  // 大括号内的首尾需要空格
+  // 对象首尾需要空格（对象、数组）
   bracketSpacing: true,
-  // jsx 标签的反尖括号需要换行
-  jsxBracketSameLine: true,
-  // 箭头函数，只有一个参数的时候，也需要括号 <always|avoid>
+  // 标签的闭合是否换行
+  bracketSameLine: false,
+  // jsx 标签的闭合是否换行(2.4.0 已废除)
+  // jsxBracketSameLine: false,
+  // 箭头函数参数是否添加括号(单个参数) <always|avoid>
   arrowParens: "avoid",
-  // 每个文件格式化的范围是文件的全部内容
+  // 指定格式化文件的部分内容
   rangeStart: 0,
   rangeEnd: Infinity,
-  // 不需要写文件开头的 @prettier 用于逐步过渡大型项目中未被格式化的代码标识
+  // 限制为只格式化头部注释中包含 @prettier 的文件
   requirePragma: false,
-  // 不需要自动在文件开头插入 @prettier 用于逐步过渡大型项目中未被格式化的代码标识
+  // 在文件头部插入一个特殊的 @format标记，指定该文件已使用pretttier进行了格式化
   insertPragma: false,
-  // 使用默认的折行标准
+  // 内容折行方式 <always|never|preserve>
   proseWrap: "preserve",
-  // 根据显示样式决定 html 要不要折行 <css|strict|ignore>"
+  // 指定HTML文件的全局空格敏感度 <css|strict|ignore>
   htmlWhitespaceSensitivity: "css",
-  // 换行符使用 lf 结尾  <lf|crlf|cr|auto>
+  // 是否缩进Vue文件中<script>和<style>标签内的代码
+  vueIndentScriptAndStyle: true,
+  // 指定行结尾换行符风格 <lf|crlf|cr|auto>
   endOfLine: "lf",
-  embeddedLanguageFormatting: "off"
+  // 指定是否尝试格式化嵌入的代码 <auto|off>
+  embeddedLanguageFormatting: "auto",
+  // 在HTML、Vue和JSX中强制每行单个属性
+  singleAttributePerLine: false
 };
