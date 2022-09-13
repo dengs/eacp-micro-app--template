@@ -39,7 +39,7 @@ module.exports = {
   // 指定HTML文件的全局空格敏感度 <css|strict|ignore>
   htmlWhitespaceSensitivity: "css",
   // 是否缩进Vue文件中<script>和<style>标签内的代码
-  vueIndentScriptAndStyle: true,
+  vueIndentScriptAndStyle: false,
   // 指定行结尾换行符风格 <lf|crlf|cr|auto>
   endOfLine: "lf",
   // 指定是否尝试格式化嵌入的代码 <auto|off>
