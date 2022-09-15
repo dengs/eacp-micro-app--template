@@ -40,7 +40,7 @@ const app = new Vue({
 window.microApp.dispatch({ $app: app });
 
 // 监听卸载操作
-window.addEventListener("unmount", function() {
+window.addEventListener("unmount", () => {
   // app.$destroy();
   console.log("[micro-app] unmount.");
 });
