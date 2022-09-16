@@ -21,7 +21,9 @@ module.exports = {
     // 函数括号前的空格
     "space-before-function-paren": ["off", { "anonymous": "always", "named": "never", "asyncArrow": "always" }],
     // vue 限制多词组件名称
-    "vue/multi-word-component-names": "off"
+    "vue/multi-word-component-names": "off",
+    // 禁止不必要的布尔转换
+    "no-extra-boolean-cast": "off"
   },
   overrides: [
     {
