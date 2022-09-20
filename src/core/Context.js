@@ -2,7 +2,7 @@
  * 从主应用获取公共资源作为上下文
  */
 const { app: mainApp, Modules } = require("./Based");
-const { $store: store, $i18n: i18n } = mainApp;
+const { $store: store, $i18n: i18n, $ctx: mainAppCtx = {} } = mainApp;
 
 const env = {
   microAppName: process.env.VUE_APP_MICRO_APP_NAME
@@ -25,4 +25,4 @@ const setGlobalData = ({ app, data = {} }) => {
 
 export { env, mainApp, store, i18n, getGlobalData, setGlobalData };
 
-export default { env, mainApp, store, i18n, Modules, getGlobalData, setGlobalData };
+export default { ...mainAppCtx, env, mainApp, store, i18n, Modules, getGlobalData, setGlobalData };
