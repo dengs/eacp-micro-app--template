@@ -20,7 +20,13 @@ const getAppGlobalData = app => mainAppCtx.getAppGlobalData(app || env.microAppN
  * @param {*} app
  * @param {*} data
  */
-const setAppGlobalData = (app, data) => mainAppCtx.setAppGlobalData(app || env.microAppName, data);
+const setAppGlobalData = function (app, data) {
+  if (arguments.length < 2) {
+    data = app;
+    app = env.microAppName;
+  }
+  mainAppCtx.setAppGlobalData(app || env.microAppName, data);
+};
 
 export { env, mainApp, store, i18n, Modules, getAppGlobalData, setAppGlobalData };
 
