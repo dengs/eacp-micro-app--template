@@ -9,20 +9,19 @@ const env = {
 };
 
 /**
- * 获取全局数据
- * @param {*} appName
+ * 获取App全局数据
+ * @param {*} app
  * @returns
  */
-const getGlobalData = appName => (appName ? window.microApp.getGlobalData()[appName] : window.microApp.getGlobalData());
+const getAppGlobalData = app => mainAppCtx.getAppGlobalData(app || env.microAppName);
 
 /**
- * 设置全局数据
- * @param {*} { app, data }
+ * 设置App全局数据
+ * @param {*} app
+ * @param {*} data
  */
-const setGlobalData = ({ app, data = {} }) => {
-  window.microApp.setGlobalData({ app: app === undefined ? env.microAppName : app, data });
-};
+const setAppGlobalData = (app, data) => mainAppCtx.setAppGlobalData(app || env.microAppName, data);
 
-export { env, mainApp, store, i18n, getGlobalData, setGlobalData };
+export { env, mainApp, store, i18n, Modules, getAppGlobalData, setAppGlobalData };
 
-export default { ...mainAppCtx, env, mainApp, store, i18n, Modules, getGlobalData, setGlobalData };
+export default { ...mainAppCtx, env, mainApp, store, i18n, Modules, getAppGlobalData, setAppGlobalData };
