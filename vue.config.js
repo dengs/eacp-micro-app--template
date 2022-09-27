@@ -5,11 +5,19 @@ module.exports = defineConfig({
   transpileDependencies: true,
   publicPath: process.env.VUE_APP_CTX_PATH,
   devServer: {
+    host: process.env.VUE_APP_APP_HOST,
+    port: process.env.VUE_APP_APP_PORT,
     headers: {
       "Access-Control-Allow-Origin": "*"
     },
-    host: process.env.VUE_APP_APP_HOST,
-    port: process.env.VUE_APP_APP_PORT
+    proxy: {
+      [process.env.VUE_APP_API_BASE_URL]: {
+        target: process.env.VUE_APP_API_PROXY_TARGET,
+        ws: false,
+        changeOrigin: true,
+        pathRewrite: JSON.parse(process.env.VUE_APP_API_PROXY_PATH_REWRITE)
+      }
+    }
   },
   configureWebpack: {
     output: {
