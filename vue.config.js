@@ -15,7 +15,7 @@ module.exports = defineConfig({
         target: process.env.VUE_APP_API_PROXY_TARGET,
         ws: false,
         changeOrigin: true,
-        pathRewrite: JSON.parse(process.env.VUE_APP_API_PROXY_PATH_REWRITE)
+        pathRewrite: JSON.parse(process.env.VUE_APP_API_PROXY_PATH_REWRITE || "{}")
       }
     }
   },
