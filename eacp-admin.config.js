@@ -34,11 +34,20 @@ console.log("### Register micro apps: ", microApps);
 module.exports = merge(AdminDevServerConfig, {
   devServer: {
     port: devEnv["ADMIN_PORT"],
+    headers: {
+      "X-Custom-aa": "costom option aa" // 只对 response 有效
+    },
     onBeforeSetupMiddleware: ({ app }) => app.get("/api/envMicroApps", (req, res) => res.json({ success: true, data: microApps })),
     proxy: {
       "/api": {
         target: devEnv["API_PROXY_TARGET"],
         ws: false,
+        headers: {
+          "X-Custom-bb": "costom option bb" //  request 有效
+        },
+        bypass: function (req, res, proxyOptions) {
+          req.headers["X-Custom-cc"] = "costom option cc"; //  request 有效
+        },
         changeOrigin: true,
         pathRewrite: JSON.parse(devEnv["API_PROXY_PATH_REWRITE"])
       }
