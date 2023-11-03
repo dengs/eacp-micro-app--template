@@ -1,5 +1,3 @@
-import Api from "@/core/Api";
+export {};
 
-export default Object.assign(Api, {
-  /** 合并当前微应用Api */
-});
+export default {};

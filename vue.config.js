@@ -19,7 +19,9 @@ module.exports = defineConfig({
       }
     }
   },
+
   configureWebpack: {
+    resolve: { fallback: { fs: false } },
     output: {
       library: `${name}-[name]`,
       libraryTarget: "umd", // 把微应用打包成 umd 库格式

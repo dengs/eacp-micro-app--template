@@ -23,7 +23,8 @@ module.exports = {
     // vue 限制多词组件名称
     "vue/multi-word-component-names": "off",
     // 禁止不必要的布尔转换
-    "no-extra-boolean-cast": "off"
+    "no-extra-boolean-cast": "off",
+    "no-undef": 0
   },
   overrides: [
     {
