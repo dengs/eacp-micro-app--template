@@ -9,7 +9,7 @@ import { Context, Components } from "./core";
 
 import HanUI, { mixins } from "@hanzhisoft/han-ui";
 import "@hanzhisoft/han-ui/lib/han-ui.css";
-import "element-ui/lib/theme-chalk/index.css";
+// import "element-ui/lib/theme-chalk/index.css";
 
 Vue.config.productionTip = false;
 Vue.prototype.$ctx = Context;
